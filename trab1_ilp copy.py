@@ -51,7 +51,8 @@ def seconrOp(arr):
 
 #Função correspondente à operação: 3. lista todas as palavras
 def thirdOp(arr):
-    for word in removeRepeatedItems(arrSort(arr)):
+    sortedArray = arrSort(arr)[:]
+    for word in removeRepeatedItems(sortedArray):
         print(word)
 
 #Função correspondente à operação: 4. número de vezes em que uma palavra ocorre
@@ -69,7 +70,8 @@ def fifthOp(arr):
 
 #Função correspondente à operação: 6. listagem de caracteres que não são letras nem espaços
 def sixthOp(arr):
-    for symbol in removeRepeatedItems(arr):
+    opArray = arr[:]
+    for symbol in removeRepeatedItems(opArray):
         print(symbol)
 
 #Função responsável pela chamada das operaçõee
