@@ -7,12 +7,13 @@ linesQt = int(input()) #recebe o número de linhas
 inputLines = '' #inicia a string que receberá todas as linhas inseridas
 
 def arrSort(arr):
+    array = arr[:]
 #Função para ordenação de arrays
-    for j in range(len(arr)):
-        for i in range(j+1,len(arr)):
-            if arr[i] < arr[j]:
-                arr[j],arr[i] = arr[i],arr[j]
-    return arr
+    for j in range(len(array)):
+        for i in range(j+1,len(array)):
+            if array[i] < array[j]:
+                array[j],array[i] = array[i],array[j]
+    return array
 
 def removeRepeatedItems(arr):
 #Função para remover repetições de itens nos arrays
@@ -93,9 +94,9 @@ def opSelection(unorderedWordsArray,orderedWordsArray):
                     case 'o':
                         sequentialSearch(orderedWordsArray,input())    
             case 'b':
-                thirdOp(orderedWordsArray,input(),"b")
+                customSearch(orderedWordsArray,input(),"b")
             case 'r':
-                thirdOp(orderedWordsArray,input(),"r")
+                customSearch(orderedWordsArray,input(),"r")
         opId = input()
         # if opId == 'n':
         #     printListItems(unorderedWordsArray)
@@ -108,9 +109,9 @@ def opSelection(unorderedWordsArray,orderedWordsArray):
         #         case 'o':
         #             sequentialSearch(orderedWordsArray,input())    
         # elif opId == 'b':
-        #     thirdOp(orderedWordsArray,input(),"b")
+        #     customSearch(orderedWordsArray,input(),"b")
         # elif opId == 'r':
-        #     thirdOp(orderedWordsArray,input(),"r")
+        #     customSearch(orderedWordsArray,input(),"r")
         # opId = input()
     return
 
