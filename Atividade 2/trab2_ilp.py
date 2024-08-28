@@ -1,10 +1,12 @@
-import re 
-#importa a biblioteca padrão para RegEx
-import random 
-#importa biblioteca padrão para gerar números aleatórios
+#Author: Luana da Silva de Jesus
 
-linesQt = int(input()) #recebe o número de linhas
-inputLines = '' #inicia a string que receberá todas as linhas inseridas
+import re 
+import random 
+
+linesQt = int(input()) 
+#recebe o número de linhas
+inputLines = '' 
+#inicia a string que receberá todas as linhas inseridas
 
 def arrSort(arr):
     array = arr[:]
@@ -13,18 +15,6 @@ def arrSort(arr):
         for i in range(j+1,len(array)):
             if array[i] < array[j]:
                 array[j],array[i] = array[i],array[j]
-    return array
-
-def removeRepeatedItems(arr):
-#Função para remover repetições de itens nos arrays
-    array = arr[:]
-    for i in range(len(array)):
-        indexArr = []
-        for j in range(i+1,len(array)):
-            if array[i] == array[j]:
-                indexArr.insert(0,j)
-        for b in indexArr:
-            array.pop(b)       
     return array
 
 def printListItems(Array):
@@ -40,17 +30,6 @@ def sequentialSearch(array,word):
         if array[i] == word:
             return print('palavra existente',i+1)
     print(f"palavra não existente {len(array)}")
-    # word = input()
-    # exists = False
-    # i = 0
-    # while ((not exists) and i<len(array)):
-    #     if array[i] == word:
-    #         exists = True
-    #     i+=1
-    # if exists:
-    #     print(f"palavra existente {i}")
-    # else:
-    #     print("palavra nao existente")
 
 def customSearch(array,word,operator):
 #Algoritmo para busca binaria e com meio aleatório
@@ -60,14 +39,13 @@ def customSearch(array,word,operator):
     j = 0
     def m(a,b) : return ((a+b)//2 if operator == "b" else random.randint(a,b)) #possible to use math.floor(m)
     #retorna o valor para o meio
-    #caso operator = "b", retorna o meio para busca binaria comum
-    #caso operator != "b", retorna o meio aleatorio no intervalo
     while((i <= f) and (not exists)):
-        print(f'i: {i} f:{f} m:{m(i,f)}')
-        if word < array[m(i,f)]:
-            f = m(i,f)-1
-        elif word > array[m(i,f)]:
-            i = m(i,f)+1
+        mid = m(i,f)
+        print(f'i: {i} f:{f} m:{mid}')
+        if word < array[mid]:
+            f = mid-1
+        elif word > array[mid]:
+            i = mid+1
         else:
             exists = True
         j+=1
@@ -98,30 +76,13 @@ def opSelection(unorderedWordsArray,orderedWordsArray):
             case 'r':
                 customSearch(orderedWordsArray,input(),"r")
         opId = input()
-        # if opId == 'n':
-        #     printListItems(unorderedWordsArray)
-        # elif opId == 'o':
-        #     printListItems(orderedWordsArray)
-        # elif opId == 's':
-        #     match input():
-        #         case 'n':
-        #             sequentialSearch(unorderedWordsArray,input())
-        #         case 'o':
-        #             sequentialSearch(orderedWordsArray,input())    
-        # elif opId == 'b':
-        #     customSearch(orderedWordsArray,input(),"b")
-        # elif opId == 'r':
-        #     customSearch(orderedWordsArray,input(),"r")
-        # opId = input()
-    return
-
 
 
 #Solicita e recebe as linhas de texto na entrada
 for i in range(linesQt):
     inputLines += f'{input()} '
 
-words = removeRepeatedItems(re.findall(r'\b\w+\b', inputLines))
+words = re.findall(r'\b\w+\b', inputLines)
 #Transformação das linhas inseridas em um array de palavras 
 #re.findall(r'\b\w+\b', inputLines): método python que retorna array de palavras através da RegEx r'\b\w+\b'
 
